@@ -49,20 +49,14 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const bootcamps = require("./routes/bootcamps");
-
+const logger = require("./middleware/logger")
 // In order to load config variables we have to load that env file here /Load env vars
 
 dotenv.config({ path: "./config/config.env" });
+
 const app = express();
 
-//Create middleware function which will be available by call nex() ii last of the function and this fuction is accessable in routes as a middlaware
-// When any route call this function will run automatically
 
-const logger = (req, res, next) => {
-  req.hello = "Hello World";
-  console.log("Middle ware runs");
-  next();
-};
 
 app.use(logger);
 
