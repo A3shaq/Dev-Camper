@@ -55,6 +55,17 @@ const bootcamps = require("./routes/bootcamps");
 dotenv.config({ path: "./config/config.env" });
 const app = express();
 
+//Create middleware function which will be available by call nex() ii last of the function and this fuction is accessable in routes as a middlaware
+// When any route call this function will run automatically
+
+const logger = (req, res, next) => {
+  req.hello = "Hello World";
+  console.log("Middle ware runs");
+  next();
+};
+
+app.use(logger);
+
 // Mount routes
 
 app.use(`/api/v1/bootcamps`, bootcamps);

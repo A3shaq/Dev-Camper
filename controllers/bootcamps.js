@@ -4,9 +4,15 @@ const todos = require("../mock");
 // @route GET /api/v1/bootcamps
 // @access Public
 exports.getBootcamps = (req, res, next) => {
+  console.log(req.hello,"req.hello,")
   res
     .status(200)
-    .json({ sucess: true, data: todos, message: "Show all bootcamps" });
+    .json({
+      sucess: true,
+      data: todos,
+      message: "Show all bootcamps",
+      hello: req.hello,
+    });
 };
 
 // @desc Get Single bootcamps
@@ -35,15 +41,15 @@ exports.createBootcamp = (req, res, next) => {
 exports.updateBootcamp = (req, res, next) => {
   //   todos.push({ name: req.params.name });
 
-//   let updatedTodo = todos.map((item) => {
-//     item.id == req.params.id;
-//     // console.log()
-//     item.name = req.params.name;
+  //   let updatedTodo = todos.map((item) => {
+  //     item.id == req.params.id;
+  //     // console.log()
+  //     item.name = req.params.name;
 
-//   });
+  //   });
   res.status(200).json({
     sucess: true,
-    data: updatedTodo,
+    data: todos,
     message: `Bootcamp Updated of ${req.params.id}`,
   });
 };
